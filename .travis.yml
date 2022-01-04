@@ -22,3 +22,16 @@ after_success:
   - docker push firpaw2020dockerlabs/lab:fib-nginx
   - docker push firpaw2020dockerlabs/lab:fib-server
   - docker push firpaw2020dockerlabs/lab:fib-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "zadanie1"
+  env: "zadanie1-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-659888414610"
+  bucket_path: "zadanie1"
+  edge: true
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
